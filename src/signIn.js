@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css';
 import { NavLink } from 'react-router-dom';
+import Footer from "./footer";
 
 const SignInForm = () => {
     return (
@@ -21,16 +22,19 @@ const SignInForm = () => {
 
 const SignIn = () => {
     return (
-        <main id='main-container' role='main'>
-            <div className='view-container sessions new'>
-                <main>
-                    <header >
-                        <div className='logo'></div>
-                    </header>
-                    <SignInForm />
-                </main>
-            </div>
-        </main>
+        <div className='marginTop'>
+            <main id='main-container' role='main'>
+                <div className='view-container sessions new'>
+                    <main>
+                        <header >
+                            <div className='logo'></div>
+                        </header>
+                        <SignInForm />
+                    </main>
+                </div>
+            </main>
+            {/*<Footer />*/}
+        </div>
     )
 }
 

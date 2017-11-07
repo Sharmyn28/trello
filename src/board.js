@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { addComment } from './actions';
 import Head from './Head'
 import Footer from './footer'
+import { connect } from 'redux-zero/react';
 
 const User = ({ name }) => {
     return (
@@ -88,7 +89,7 @@ const Boards = ({ board, tboard }) => {
                                                     />
                                                     <button type="submit" name="submit">Create board</button>
                                                     <span> or </span>
-                                                    <a href="#">cancel</a>
+                                                    <a >cancel</a>
                                                 </div>
                                             </form>
                                         </div>
@@ -104,3 +105,7 @@ const Boards = ({ board, tboard }) => {
         </div>
     );
 };
+
+//export default Boards;
+const mapToProps = ({ board, tboard }) => ({ board, tboard });
+export default connect(mapToProps)(Boards);

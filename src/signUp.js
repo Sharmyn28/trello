@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css';
 import { NavLink } from 'react-router-dom';
+import Footer from "./footer";
 
 const SignUpForm = () => {
     return (
@@ -39,6 +40,7 @@ const SignUp = () => {
                     </div>
                 </main>
             </div>
+            {/*<Footer />*/}
         </main>
     )
 }

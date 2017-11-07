@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './App.css';
 
 const Footer = () => {
     return (
-
         <footer id="main_footer">
             <small>
                 <a href="https://trello.com/" target="_blank">Trello</a> tribute for educational purposes
@@ -12,7 +11,7 @@ const Footer = () => {
                 by <a href="https://twitter.com/bigardone">@bigardone</a>
             </small>
         </footer>
-    );
+    )
 }
 
 export default Footer;

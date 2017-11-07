@@ -3,6 +3,11 @@
  * 1. Set default font family to sans-serif.
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom. */
+
+.marginTop {
+ 
+}
+
 html {
   font-family: sans-serif;
   /* 1 */
@@ -793,7 +798,7 @@ form .error, .form .error {
 .sessions.new, .registrations.new {
   background: #89609E;
   background-size: cover;
-  position: relative;
+  /*position: relative;*/
   height: 100%; }
   .sessions.new main, .registrations.new main {
     -webkit-transform: translate(-50%, -50%);
