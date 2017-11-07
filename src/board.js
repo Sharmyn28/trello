@@ -16,7 +16,7 @@ const User = ({ name }) => {
     );
 }
 
-const Usertwo = ({ tboard }) => {
+const OtherBoard = ({ tboard }) => {
     return (
         <section>
             <header class="view-header">
@@ -35,30 +35,29 @@ const Usertwo = ({ tboard }) => {
                         );
                     })
                 }
-
             </div>
-        </section>)
+        </section>
+    )
 }
 
-const Boards = ({ board, tboard }) => {
-    const onSubmit = e => {
+const Boards = ({tboard}) => {
+    /*const onSubmit = e => {
         e.preventDefault();
         if (this.refInput.value) {
             addComment(this.refInput.value);
             this.refInput.value = '';
         }
+    }*/
 
-    };
-    const boardComponent = board.map((item, index) => {
+    /*const BoardComponent = board.map((item, index) => {
         return <User
             key={index}
             name={item.name}
-            index={index}
         />
-    })
+    })*/
 
     return (
-        <div id='main_container'>
+        <main id='main_container'>
             <div>
                 <div id='authentication_container' className='application-container'>
                     <Head />
@@ -68,8 +67,8 @@ const Boards = ({ board, tboard }) => {
                                 <header class="view-header" >
                                     <h3><i class="fa fa-user"></i><span> My boards</span></h3>
                                 </header>
-                                <div className="boards-wrapper">
-                                    {boardComponent}
+                                {/*<div className="boards-wrapper">
+                                    {BoardComponent}
                                     <div className="board add-new">
                                         <div class="inner">
                                             <a id="add_new_board">Add new board...</a>
@@ -78,15 +77,15 @@ const Boards = ({ board, tboard }) => {
                                     <div className='board form'>
                                         <div className='inner'>
                                             <h4>New board</h4>
-                                            <form onSubmit={onSubmit} id='new_board_form'>
+                                            <form id='new_board_form'> {/*onSubmit={onSubmit}}
                                                 <div className="inner-wrap">
                                                     <input
                                                         type="text"
                                                         id="board_name"
                                                         name="name"
                                                         placeholder="User"
-                                                        ref={e => (this.refInput = e)}
-                                                    />
+                                                        
+                                                    />{/*ref={e => (this.refInput = e)}}
                                                     <button type="submit" name="submit">Create board</button>
                                                     <span> or </span>
                                                     <a >cancel</a>
@@ -94,18 +93,18 @@ const Boards = ({ board, tboard }) => {
                                             </form>
                                         </div>
                                     </div>
-                                </div>
+    </div>*/}
                             </section>
-                            <Usertwo tboard={tboard} />
+                            <OtherBoard tboard={tboard} />
                         </div>
-                    </div>
+                        </div>
                 </div>
             </div>
             <Footer />
-        </div>
+        </main>
     );
 };
 
 //export default Boards;
-const mapToProps = ({ board, tboard }) => ({ board, tboard });
+const mapToProps = ({ tboard }) => ({ tboard });
 export default connect(mapToProps)(Boards);

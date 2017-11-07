@@ -54,8 +54,6 @@ const tboard = [
     }
 ];
 
-
-
 const initialState = {
     board: board,
     tboard: tboard,
