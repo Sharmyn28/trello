@@ -3,54 +3,54 @@ import createStore from 'redux-zero';
 const board = [
     {
         id: 0,
-        name: 'Rita'
+        name: 'Beth'
     },
     {
         id: 1,
-        name: 'Melania'
+        name: 'Diana'
     },
     {
         id: 2,
-        name: 'Arich-jos',
+        name: 'Leo',
     },
     {
         id: 3,
-        name: 'Rita'
+        name: 'Listra'
     },
     {
         id: 4,
-        name: 'Melania'
+        name: 'Merk'
     },
     {
         id: 5,
-        name: 'Arich-jos',
+        name: 'karen',
     }
 ];
 
 const tboard = [
     {
         id: 0,
-        name: 'Rita'
+        name: 'Manuel'
     },
     {
         id: 1,
-        name: 'Melania'
+        name: 'Adele'
     },
     {
         id: 2,
-        name: 'Arich-jos',
+        name: 'Vale',
     },
     {
         id: 3,
-        name: 'Rita'
+        name: 'Ana'
     },
     {
         id: 4,
-        name: 'Melania'
+        name: 'Malala'
     },
     {
         id: 5,
-        name: 'Arich-jos',
+        name: 'George',
     }
 ];
 

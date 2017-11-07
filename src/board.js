@@ -40,7 +40,7 @@ const OtherBoard = ({ tboard }) => {
     )
 }
 
-const Boards = ({tboard}) => {
+const Boards = ({ tboard, board }) => {
     /*const onSubmit = e => {
         e.preventDefault();
         if (this.refInput.value) {
@@ -49,12 +49,12 @@ const Boards = ({tboard}) => {
         }
     }*/
 
-    /*const BoardComponent = board.map((item, index) => {
+    const BoardComponent = board.map((item, index) => {
         return <User
             key={index}
             name={item.name}
         />
-    })*/
+    })
 
     return (
         <main id='main_container'>
@@ -67,7 +67,7 @@ const Boards = ({tboard}) => {
                                 <header class="view-header" >
                                     <h3><i class="fa fa-user"></i><span> My boards</span></h3>
                                 </header>
-                                {/*<div className="boards-wrapper">
+                                <div className="boards-wrapper">
                                     {BoardComponent}
                                     <div className="board add-new">
                                         <div class="inner">
@@ -77,34 +77,34 @@ const Boards = ({tboard}) => {
                                     <div className='board form'>
                                         <div className='inner'>
                                             <h4>New board</h4>
-                                            <form id='new_board_form'> {/*onSubmit={onSubmit}}
+                                            {/*<form id='new_board_form'> {onSubmit = { onSubmit }}
                                                 <div className="inner-wrap">
                                                     <input
                                                         type="text"
                                                         id="board_name"
                                                         name="name"
                                                         placeholder="User"
-                                                        
-                                                    />{/*ref={e => (this.refInput = e)}}
+
+                                                    />{ref = { e => (this.refInput = e) }}
                                                     <button type="submit" name="submit">Create board</button>
                                                     <span> or </span>
                                                     <a >cancel</a>
                                                 </div>
-                                            </form>
+    </form>*/}
                                         </div>
                                     </div>
-    </div>*/}
+                                </div>
                             </section>
                             <OtherBoard tboard={tboard} />
                         </div>
                         </div>
                 </div>
             </div>
-            <Footer />
+            {/*<Footer />*/}
         </main>
     );
 };
 
 //export default Boards;
-const mapToProps = ({ tboard }) => ({ tboard });
+const mapToProps = ({ tboard, board }) => ({ tboard, board });
 export default connect(mapToProps)(Boards);
