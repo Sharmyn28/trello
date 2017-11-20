@@ -39,7 +39,7 @@ const OtherBoard = ({ tboard }) => {
     )
 }
 
-const LogoutButton = ({ showReply }) => {
+const AddNewBoard = ({ showReply }) => {
     return (
         !showReply && <div className="board add-new">
             <div className="inner">
@@ -49,7 +49,7 @@ const LogoutButton = ({ showReply }) => {
     )
 }
 
-const LoginButton = ({ showReply }) => {
+const NewBoard = ({ showReply }) => {
     const onSubmit = e => {
         e.preventDefault();
         if (this.refInput.value) {
@@ -116,8 +116,8 @@ const Boards = ({ tboard, board, showReply }) => {
                                 </header>
                                 <div className="boards-wrapper">
                                     {BoardComponent}
-                                    <LogoutButton showReply={showReply} />
-                                    <LoginButton showReply={showReply} />
+                                    {/*<AddNewBoard showReply={showReply} />*/}
+                                    <NewBoard showReply={showReply} />
                                     {/*<div className="board add-new">
                                         <div class="inner">
                                             <a id="add_new_board">Add new board...</a>

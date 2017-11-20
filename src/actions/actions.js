@@ -1,5 +1,5 @@
 import store from '../store/store';
-import firebase from 'firebase'
+import { auth, database } from './firebase';
 /*
 export const addComment = (name) => {
     let oldList = store.getState().board;
@@ -21,18 +21,36 @@ export const removeComment = (index) => {
     })
 }*/
 
+export function signUp(fullname, email, pass, survey, question, options) {
+    console.log('signUp' + fullname + email + pass);
 
+    auth.createUserWithEmailAndPassword(email, pass).then(user => {
+        let newuser = {
+            fullname, email, survey, question, options
+        }
+        database.ref('users/' + user.uid).set(newuser);
 
-//inicializando firebase
-var config = {
-    apiKey: "AIzaSyBE9qcjnHfiHSbeX44w1yB0s6yJI95l8IU",
-    authDomain: "trello-fire.firebaseapp.com",
-    databaseURL: "https://trello-fire.firebaseio.com",
-    projectId: "trello-fire",
-    storageBucket: "trello-fire.appspot.com",
-    messagingSenderId: "587446245909"
-};
-firebase.initializeApp(config);
+        // database.ref ('users/' + user.uid + '/options').update ( 'option1, option2, option3...');   
+        //  database.ref ('users/').push (newuser);   
+
+        database.ref('users/' + user.uid).once('value').then(res => {
+            const fullUserInfo = res.val();
+
+            console.log('full info ', fullUserInfo);
+            store.setState({
+                user: {
+                    id: user.uid,
+                    email: fullUserInfo.email,
+                    fullname: fullUserInfo.fullname,
+                    survey: fullUserInfo.survey,
+                    question: fullUserInfo.question,
+                    options: fullUserInfo.options
+                }
+            })
+        })
+    })
+}
+
 
 const snapshotToArray = snapshot => {
     let comments = []
@@ -114,7 +132,7 @@ export const handleLogoutClick = () => {
     store.setState({ showReply: bolean });
 }
 
-/********************** Lista de board *********************************/
+/**** BOARD LIST ****/
 
 export const addList = (selected, name) => {
     let oldList = [...store.getState().board];
@@ -149,7 +167,7 @@ export const handleShowClick = (selected) => {
     })
 }
 
-/********************* add works Comments ******************************/
+/**** ADDING Comments ******************************/
 
 export const addTodo = (selected, index, todocoment) => {
     let oldList = [...store.getState().board];

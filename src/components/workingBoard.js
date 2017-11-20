@@ -5,8 +5,6 @@ import Head from './Head'
 import Footer from './footer'
 import { addList, handleShowClick, handleHideClick, addTodo, TodoHideClick, TodoShowClick } from '../actions/actions';
 
-/* -----------------Agregar Comentarios--------------------------- */
-
 const TodoHide = ({ selected, index }) => {
     return (
         <a className="add-new" onClick={() => TodoHideClick(selected, index)} > Add a new card...</a>
@@ -37,8 +35,6 @@ const TodoShow = ({ selected, index }) => {
     )
 
 }
-
-/* --------------------------------------------**---------------------------------------------------------------- */
 
 const User = ({ title, evalue, board, index, selected }) => {
     return (
@@ -71,7 +67,7 @@ const User = ({ title, evalue, board, index, selected }) => {
     );
 }
 
-/* ***************************Agregar lista de tareas****************************** */
+
 const LogoutButton = ({ selected }) => {
     return (
         <div className="list add-new"><div className="inner" onClick={() => handleHideClick(selected)}>Add new list...</div></div>
@@ -112,7 +108,6 @@ const LoginButton = ({ selected }) => {
 
 }
 
-/* ********************************************************************************** */
 
 const WorkingBoard = ({ board, idBoard, index }) => {
 
