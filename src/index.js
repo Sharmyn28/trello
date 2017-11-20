@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import { HashRouter, Switch, Route } from 'react-router-dom';
-import SignIn from './signIn';
-import SignUp from './signUp';
-import Boards from './board';
-import { Provider } from 'redux-zero/react'
-import store from './store'
+import SignIn from './components/signIn';
+import SignUp from './components/signUp';
+import Boards from './components/board';
+import WorkingBoard from './components/workingBoard';
+import { Provider } from 'redux-zero/react';
+import store from './store/store';
 
 const Index = () => (
     <Provider store={store}>
@@ -18,6 +19,7 @@ const Index = () => (
                 <Route path='/signin' component={SignIn} />
                 <Route path='/signup' component={SignUp} />
                 <Route path='/board' component={Boards} />
+                <Route path="/details" component={WorkingBoard} />
                 {/*<Route path='/skills' component={Skills} />*/}
             </Switch>
         </HashRouter>

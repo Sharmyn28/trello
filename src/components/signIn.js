@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import '../styles/style.css';
 import { NavLink } from 'react-router-dom';
 import Footer from "./footer";
 
@@ -22,7 +22,7 @@ const SignInForm = () => {
 
 const SignIn = () => {
     return (
-        <div className='marginTop'>
+        <div className=''>
             <main id='main-container' role='main'>
                 <div className='view-container sessions new'>
                     <main>

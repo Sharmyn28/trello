@@ -1,7 +1,7 @@
 import React from 'react';
-import './style.css';
+import '../styles/style.css';
 import { NavLink } from 'react-router-dom';
-import { addComment } from './actions';
+import { addComment } from '../actions/actions';
 import Head from './Head'
 import Footer from './footer'
 import { connect } from 'redux-zero/react';
