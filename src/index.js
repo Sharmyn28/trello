@@ -8,6 +8,7 @@ import SignIn from './components/signIn';
 import SignUp from './components/signUp';
 import BoardView from './components/board';
 import WorkingBoard from './components/workingBoard';
+import StageView from './components/stage';
 import { Provider } from 'redux-zero/react';
 import store from './store/store';
 
@@ -19,7 +20,8 @@ const Index = () => (
                 <Route path='/signin' component={SignIn} />
                 <Route path='/signup' component={SignUp} />
                 <Route path='/board' component={BoardView} />
-                <Route path="/details" component={WorkingBoard} />
+                {/*<Route path="/details" component={WorkingBoard} />*/}
+                <Route path="/details" component={StageView} />
                 {/*<Route path='/skills' component={Skills} />*/}
             </Switch>
         </HashRouter>

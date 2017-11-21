@@ -217,7 +217,7 @@ const BoardView = ({ user, boards, tboard }) =>{
         </main>
     );
 }
-//export default Boards;
-//const mapToProps = ({ tboard, board }) => ({ tboard, board });
+
+
 const mapToProps = ({ user, boards, tboard }) => ({ user, boards, tboard });
 export default connect(mapToProps)(BoardView);
