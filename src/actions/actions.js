@@ -1,19 +1,7 @@
 import store from '../store/store';
 import { auth, database } from './firebase';
+import { board } from '../store/dataBase';
 /*
-export const addComment = (name) => {
-    let oldList = store.getState().board;
-    const newList = oldList.concat({
-        id: oldList.length,
-        name: name,
-    });
-    store.setState({
-        board: newList
-    });
-
-    console.log(newList);
-};
-
 export const removeComment = (index) => {
     const newforoList = store.getState().board.filter((item, idx) => idx !== index);
     store.setState({
@@ -21,12 +9,12 @@ export const removeComment = (index) => {
     })
 }*/
 
-export function signUp(fullname, email, pass, survey, question, options) {
-    console.log('signUp' + fullname + email + pass);
+export function signUp(firstname, lastname, email, pass) {
+    console.log('signUp' + firstname + lastname + email + pass);
 
     auth.createUserWithEmailAndPassword(email, pass).then(user => {
         let newuser = {
-            fullname, email, survey, question, options
+            firstname, lastname, email
         }
         database.ref('users/' + user.uid).set(newuser);
 
@@ -41,16 +29,162 @@ export function signUp(fullname, email, pass, survey, question, options) {
                 user: {
                     id: user.uid,
                     email: fullUserInfo.email,
-                    fullname: fullUserInfo.fullname,
-                    survey: fullUserInfo.survey,
-                    question: fullUserInfo.question,
-                    options: fullUserInfo.options
+                    firstname: fullUserInfo.firstname,
+                    lastname: fullUserInfo.lastname
                 }
             })
         })
     })
 }
 
+export function signOut() {
+    auth.signOut();
+    store.setState({
+        successLogin: false,
+        user: {
+            id: '',
+            email: ''
+        }
+    })
+}
+
+export function signIn(user, pass) {
+    auth.signInWithEmailAndPassword(user, pass).then(userObj => {
+
+        database.ref('users/' + userObj.uid).once('value').then(res => {
+            const fullUserInfo = res.val();
+
+            console.log('full info ', fullUserInfo);
+            store.setState({
+                user: {
+                    id: userObj.uid,
+                    email: fullUserInfo.email,
+                    firstname: fullUserInfo.firstname,
+                    lastname: fullUserInfo.lastname
+                }
+            })
+        })
+    })
+}
+
+/**** NEW BOARD ****/
+export function addNewBoard(title, userId) {
+
+    database.ref('boards/').push({
+        title: title,
+        user_id: userId
+    }).then(res => {
+        console.log('board id: ', res.key)
+    });
+
+}
+
+/**** TASK & STAGE ****/
+
+export function readBoard() {
+    database.ref('stages').on('value', res => {
+        let stages = []
+        res.forEach(snap => {
+            const stage = snap.val();
+            stages.push(stage);
+        })
+        store.setState({
+            stages: stages
+        })
+    });
+
+    database.ref('tasks').on('value', res => {
+        let tasks = [];
+        res.forEach(snap => {
+            const task = snap.val();
+            tasks.push(task)
+        })
+        store.setState({
+            tasks: tasks
+        })
+    });
+}
+
+export function addStage(text, board_id) {
+
+    /*let stages = [...store.getState().stages];
+    stages.push(text)
+    /*store.setState ({
+       stages : stages
+    })  */
+
+    let newobj = {
+        title: text,
+        board_id: board_id
+    }
+    console.log('stage', newobj)
+    database.ref('stages').push(newobj);
+}
+
+export function addTask(stageId, text) {
+    console.log('addTask:', stageId + ' - ' + text);
+
+    let tasks = [...store.getState().tasks];
+
+    let newTask = {
+        id: store.getState().tasks.length,
+        title: text,
+        stage: stageId
+    }
+
+    database.ref('tasks/' + newTask.id).set(newTask);
+    /*
+    store.setState ({
+       tasks : tasks
+    })  */
+}
+
+
+auth.onAuthStateChanged(user => {
+    if (user) {
+        console.log('user', user);
+        let usersRef = database.ref('/users');
+        let userRef = usersRef.child(user.uid);
+
+        database.ref('users/' + user.uid).once('value').then(res => {
+            const fullUserInfo = res.val();
+
+            store.setState({
+                successLogin: true,
+                user:{
+                    id: user.uid,
+                    email: fullUserInfo.email,
+                    firstname: fullUserInfo.firstname,
+                    lastname: fullUserInfo.lastname
+                }
+            })
+        });
+
+        database.ref('boards').on('value', res =>{
+            let boards =[];
+            res.forEach(snap => {
+                const board = snap.val();
+                board.id = snap.key;
+                boards.push(board)
+            });
+            store.setState({
+                boards: boards.filter(board => board.user_id === user.uid)
+            })
+        });
+
+        database.ref('tasks').on('value', res =>{
+            let tasks = [];
+            res.forEach( snap => {
+                const task = snap.val();
+                tasks.push(task)
+            })
+            store.setState({
+                tasks: tasks
+            })
+        })
+    }
+});
+/**** MORE ACTIONS ****/
 
 const snapshotToArray = snapshot => {
     let comments = []
@@ -67,26 +201,19 @@ const snapshotToArray = snapshot => {
 
 };
 
-export const readAllComments = () => {
-    firebase.database()
-        .ref('comentarios/')
-        .on('value', (res) => {
-            snapshotToArray(res)
-        });
-}
 
-firebase.database().ref('comentarios/').push({
+database.ref('comentarios/').push({
     id: 0,
-    name: 'Tes Board',
+    name: 'Test Board',
     cards: [
         {
-            name: "Testeo",
-            commit: ["Prototipo", "Estilos"],
+            name: "Testing",
+            comment: ["first", "second"],
             todostado: false
         },
         {
-            name: "Mocha",
-            commit: ["Prototipo", "Funcionalidad", "etc"],
+            name: "Second",
+            comment: ["add comment", "second test", "etc"],
             todostado: false
         }
     ],
@@ -103,7 +230,7 @@ export async function addComment(name) {
         cards: [],
         toggle: false
     };
-    const res = await firebase.database().ref('comentarios/').push(newlist);
+    const res = await database.ref('comentarios/').push(newlist);
     newlist.id = res.key;
 
     const newList = oldList.concat(newlist);
@@ -139,7 +266,7 @@ export const addList = (selected, name) => {
     oldList[selected].toggle = false;
     oldList[selected].cards.push({
         name: name,
-        commit: [],
+        comment: [],
         todostado: false
     });
 
@@ -167,12 +294,12 @@ export const handleShowClick = (selected) => {
     })
 }
 
-/**** ADDING Comments ******************************/
+/**** ADDING COMMENTS ******************************/
 
 export const addTodo = (selected, index, todocoment) => {
     let oldList = [...store.getState().board];
     oldList[selected].cards[index].todostado = false;
-    oldList[selected].cards[index].commit.push(todocoment);
+    oldList[selected].cards[index].comment.push(todocoment);
     console.log('nuevo comentario...')
     store.setState({
         board: oldList,

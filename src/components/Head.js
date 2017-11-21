@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../styles/style.css';
+import { signIn, signOut, signUp } from '../actions/actions'
 
 const Head = () => {
     return (
@@ -8,7 +9,7 @@ const Head = () => {
             <nav id="boards_nav">
                 <ul>
                     <li>
-                        <a href="#"><i className="fa fa-columns"></i><span> Boards</span></a>
+                        <NavLink to="/board"><i className="fa fa-columns"></i><span> Boards</span></NavLink>
                     </li>
                 </ul>
             </nav>
@@ -23,7 +24,7 @@ const Head = () => {
                         </a>
                     </li>
                     <li>
-                        <a href="#"><i className="fa fa-sign-out"></i><span> Sign out</span></a>
+                        <NavLink to="/signin" onClick={signOut}><i className="fa fa-sign-out"></i><span> Sign out</span></NavLink>
                     </li>
                 </ul>
             </nav>

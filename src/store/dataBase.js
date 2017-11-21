@@ -59,13 +59,13 @@ export const otherBoard = [
         name: 'Manuel',
         cards: [
             {
-                name: "Testeo",
-                commit: ["Prototipo", "Estilos"],
+                name: "Manuel first test",
+                comment: ["Prototipo", "Estilos"],
                 todostado: false
             },
             {
-                name: "Mocha",
-                commit: ["Prototipo", "Funcionalidad", "etc"],
+                name: "Second Task",
+                comment: ["Prototipo", "Funcionalidad", "etc"],
                 todostado: false
             }
         ],
@@ -76,13 +76,13 @@ export const otherBoard = [
         name: 'Adele',
         cards: [
             {
-                name: "Testeo",
-                commit: ["Prototipo", "Estilos"],
+                name: "Testeo de Adele",
+                comment: ["Prototipo", "Estilos"],
                 todostado: false
             },
             {
                 name: "Mocha",
-                commit: ["Prototipo", "Funcionalidad", "etc"],
+                comment: ["Prototipo", "Funcionalidad", "etc"],
                 todostado: false
             }
         ],
@@ -93,13 +93,13 @@ export const otherBoard = [
         name: 'Vale',
         cards: [
             {
-                name: "Testeo",
-                commit: ["Prototipo", "Estilos"],
+                name: "Testeo de Vale",
+                comment: ["Prototipo", "Estilos"],
                 todostado: false
             },
             {
                 name: "Mocha",
-                commit: ["Prototipo", "Funcionalidad", "etc"],
+                comment: ["Prototipo", "Funcionalidad", "etc"],
                 todostado: false
             }
         ],
@@ -110,13 +110,13 @@ export const otherBoard = [
         name: 'Ana',
         cards: [
             {
-                name: "Testeo",
-                commit: ["Prototipo", "Estilos"],
+                name: "Testeo de Ana",
+                comment: ["Prototipo", "Estilos"],
                 todostado: false
             },
             {
                 name: "Mocha",
-                commit: ["Prototipo", "Funcionalidad", "etc"],
+                comment: ["Prototipo", "Funcionalidad", "etc"],
                 todostado: false
             }
         ],

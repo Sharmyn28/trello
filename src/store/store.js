@@ -12,33 +12,13 @@ const initialState = {
     user: {
         id: null,
         email: null,
-        fullname: null,
-        survey: null,
-        question: null,
-        options: null
-    }  
+        firstname: null,
+        lastname: null
+    },
+    boards: null,
+    stages: null,
+    tasks: null
 };
-
-const states ={
-    stages: ['To do', 'Doing', 'Done'],
-    tasks: [
-        {
-            id: 0,
-            title: 'My first task',
-            stage: 'To do'
-        },
-        {
-            id: 1,
-            title: 'My second task',
-            stage: 'Doing'
-        },
-        {
-            id: 2,
-            title: 'My third task',
-            stage: 'Done'
-        }
-    ]
-}
 
 const store = createStore(initialState);
 export default store;

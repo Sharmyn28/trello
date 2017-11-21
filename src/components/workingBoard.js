@@ -52,7 +52,7 @@ const User = ({ title, evalue, board, index, selected }) => {
                                     <small>
                                         <i className="fa fa-comment-o"></i><span></span><span>1</span>
                                     </small>
-                                    <img alt="Gravatar for john@phoenix-trello.com" src="//www.gravatar.com/avatar/6a88cfcf7b76267b129b8dc477c4105e?d=retro&amp;r=g&amp;s=50" height="50" width="50" className="react-gravatar react-gravatar" />
+                                    <img alt="Gravatar for john@phoenix-trello.com" src="//www.gravatar.com/avatar/6a88cfcf7b76267b129b8dc477c4105e?d=retro&amp;r=g&amp;s=50" srcset="//www.gravatar.com/avatar/6a88cfcf7b76267b129b8dc477c4105e?d=retro&amp;r=g&amp;s=100 2x" height="50" width="50" className="react-gravatar react-gravatar" />
                                 </footer>
                             </div>
                         </div>
@@ -107,7 +107,6 @@ const LoginButton = ({ selected }) => {
     )
 
 }
-
 
 const WorkingBoard = ({ board, idBoard, index }) => {
 
