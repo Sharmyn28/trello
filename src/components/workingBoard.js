@@ -68,13 +68,13 @@ const User = ({ title, evalue, board, index, selected }) => {
 }
 
 
-const LogoutButton = ({ selected }) => {
+const AddNewList = ({ selected }) => {
     return (
         <div className="list add-new"><div className="inner" onClick={() => handleHideClick(selected)}>Add new list...</div></div>
     )
 }
 
-const LoginButton = ({ selected }) => {
+const NewList = ({ selected }) => {
     const onSubmit = e => {
         e.preventDefault();
         if (this.refInput.value) {
@@ -137,10 +137,10 @@ const WorkingBoard = ({ board, idBoard, index }) => {
                                     <div className="lists-wrapper">
                                         {boardComponent}
                                         {
-                                            board[idBoard].toggle === false && <LogoutButton selected={idBoard} />
+                                            board[idBoard].toggle === false && <AddNewList selected={idBoard} />
                                         }
                                         {
-                                            board[idBoard].toggle === true && <LoginButton selected={idBoard} />
+                                            board[idBoard].toggle === true && <NewList selected={idBoard} />
                                         }
 
                                     </div>

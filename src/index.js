@@ -6,7 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import SignIn from './components/signIn';
 import SignUp from './components/signUp';
-import Boards from './components/board';
+import BoardView from './components/board';
 import WorkingBoard from './components/workingBoard';
 import { Provider } from 'redux-zero/react';
 import store from './store/store';
@@ -18,7 +18,7 @@ const Index = () => (
                 <Route exact path='/' component={SignIn} />
                 <Route path='/signin' component={SignIn} />
                 <Route path='/signup' component={SignUp} />
-                <Route path='/board' component={Boards} />
+                <Route path='/board' component={BoardView} />
                 <Route path="/details" component={WorkingBoard} />
                 {/*<Route path='/skills' component={Skills} />*/}
             </Switch>

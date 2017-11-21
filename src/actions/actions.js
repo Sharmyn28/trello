@@ -202,7 +202,7 @@ const snapshotToArray = snapshot => {
 };
 
 
-database.ref('comentarios/').push({
+/*database.ref('comentarios/').push({
     id: 0,
     name: 'Test Board',
     cards: [
@@ -218,7 +218,7 @@ database.ref('comentarios/').push({
         }
     ],
     toggle: false
-})
+})*/
 
 export async function addComment(name) {
     let oldList = [...store.getState().board];
